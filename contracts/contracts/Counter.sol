@@ -1,13 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.25;
 
-/**
- * @title Counter
- * @notice Contrat cible utilisé pour les tests de SmartAccount.
- *         Chaque adresse (smart account) a son propre compteur.
- *
- * Ce contrat sert aussi de base pour la partie 1.2 du sujet.
- */
 contract Counter {
     mapping(address => uint256) private _counts;
 
