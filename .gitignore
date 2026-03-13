@@ -5,4 +5,5 @@ coverage/
 coverage.json
 .env
 deployment.json
+dist/
 tmp/

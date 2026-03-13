@@ -8,29 +8,29 @@ async function main() {
   const network = await ethers.provider.getNetwork();
 
   console.log("Deployer :", deployer.address);
-  console.log("Balance  :", ethers.formatEther(await ethers.provider.getBalance(deployer.address)), "ETH");
-  console.log("Network  :", network.name);
+  console.log("Balance :", ethers.formatEther(await ethers.provider.getBalance(deployer.address)), "ETH");
+  console.log("Network :", network.name);
 
   // Counter
   console.log("\n[1/3] Deploying Counter...");
   const Counter = await ethers.getContractFactory("Counter");
   const counter = await Counter.deploy();
   await counter.waitForDeployment();
-  console.log("✓ Counter:", await counter.getAddress());
+  console.log("Counter :", await counter.getAddress());
 
   // SmartAccountFactory
   console.log("\n[2/3] Deploying SmartAccountFactory...");
   const Factory = await ethers.getContractFactory("SmartAccountFactory");
   const factory = await Factory.deploy(ENTRY_POINT_ADDRESS);
   await factory.waitForDeployment();
-  console.log("✓ Factory:", await factory.getAddress());
+  console.log("Factory :", await factory.getAddress());
 
   // SmartAccount
   console.log("\n[3/3] Deploying SmartAccount...");
   const tx = await factory.createAccount(deployer.address, 0);
   await tx.wait();
   const accountAddress = await factory.getFunction("getAddress")(deployer.address, 0);
-  console.log("✓ SmartAccount:", accountAddress);
+  console.log("SmartAccount :", accountAddress);
 
   // Saving
   const deployment = {
@@ -47,11 +47,11 @@ async function main() {
   fs.writeFileSync("deployment.json", JSON.stringify(deployment, null, 2));
 
   console.log("\n=".repeat(50));
-  console.log("Counter      :", deployment.counter);
-  console.log("Factory      :", deployment.factory);
+  console.log("Counter :", deployment.counter);
+  console.log("Factory :", deployment.factory);
   console.log("SmartAccount :", deployment.smartAccount);
   console.log("=".repeat(50));
-  console.log("✓ Saved to deployment.json");
+  console.log("Saved to deployment.json");
 }
 
 main().then(() => process.exit(0)).catch(err => { console.error(err); process.exit(1); });
