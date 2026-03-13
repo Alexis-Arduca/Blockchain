@@ -28,7 +28,9 @@ module.exports = {
   },
   // Vérification Etherscan
   etherscan: {
-    apiKey: process.env.ETHERSCAN_API_KEY,
+    apiKey: {
+      sepolia: process.env.ETHERSCAN_API_KEY || "",
+    },
   },
   // Source maps et artifacts
   paths: {

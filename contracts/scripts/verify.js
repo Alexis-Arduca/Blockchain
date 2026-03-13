@@ -15,7 +15,7 @@ async function main() {
   console.log("\n[1/2] Verifying Counter...");
   try {
     await run("verify:verify", { address: d.counter, constructorArguments: [] });
-    console.log("✓ Counter verified");
+    console.log("Counter verified");
   } catch (e) {
     console.log(e.message.includes("Already Verified") ? "  Already verified." : "  Error: " + e.message);
   }
@@ -24,14 +24,14 @@ async function main() {
   console.log("\n[2/2] Verifying SmartAccountFactory...");
   try {
     await run("verify:verify", { address: d.factory, constructorArguments: [ENTRY_POINT_ADDRESS] });
-    console.log("✓ Factory verified");
+    console.log("Factory verified");
   } catch (e) {
     console.log(e.message.includes("Already Verified") ? "  Already verified." : "  Error: " + e.message);
   }
 
   console.log("\nEtherscan links:");
-  console.log("  Counter :", `https://sepolia.etherscan.io/address/${d.counter}`);
-  console.log("  Factory :", `https://sepolia.etherscan.io/address/${d.factory}`);
+  console.log("Counter :", `https://sepolia.etherscan.io/address/${d.counter}`);
+  console.log("Factory :", `https://sepolia.etherscan.io/address/${d.factory}`);
 }
 
 main().then(() => process.exit(0)).catch(err => { console.error(err); process.exit(1); });
