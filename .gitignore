@@ -7,3 +7,4 @@ coverage.json
 deployment.json
 dist/
 tmp/
+package-lock.json

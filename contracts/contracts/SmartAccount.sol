@@ -30,7 +30,7 @@ contract SmartAccount {
     error ZeroAddress();
 
     modifier onlyOwner() {
-        if (msg.sender != owner) revert NotOwner();
+        if (msg.sender != owner && msg.sender != address(this)) revert NotOwner();
         _;
     }
 
